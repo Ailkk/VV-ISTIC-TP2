@@ -14,3 +14,18 @@ NDC = number of direct connections (number of edges in the connection graph)
 NIC = number of indirect connections
 
 Et TCC = NDC / NP, et LCC = (NDC + NIC) / NP, donc LCC >= TCC. 
+
+
+```java
+public class Wejdene {
+
+  private int n;
+
+  public Wejdene(int i) { this.n = i; }
+
+  public int getN() { return this.n; }
+
+  public void incremente() { this.n = this.n + 1; }
+
+}
+```
