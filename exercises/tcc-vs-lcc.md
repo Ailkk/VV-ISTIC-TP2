@@ -4,3 +4,13 @@ Explain under which circumstances *Tight Class Cohesion* (TCC) and *Loose Class 
 
 ## Answer
 
+TCC et LCC donnent le même résultat quand le nombre de connexions indirectes dans les méthodes publiques vaut 0.
+
+
+LCC ne peut pas être plus petit que TCC pour le même code de classe :
+
+NP = maximum number of possible connections
+NDC = number of direct connections (number of edges in the connection graph)
+NIC = number of indirect connections
+
+Et TCC = NDC / NP, et LCC = (NDC + NIC) / NP, donc LCC >= TCC. 
