@@ -38,10 +38,11 @@ public class NoPublicGettersWithPrivateElements extends VoidVisitorWithDefaults<
 
     @Override
     public void visit(MethodDeclaration declaration, Void arg) {
-        
+
     }
 
     public void visitTypeDeclaration(TypeDeclaration<?> declaration, Void arg) {
+
         // Create result file
         String fileName = resultPath + "Output.txt";
         try {
@@ -55,10 +56,10 @@ public class NoPublicGettersWithPrivateElements extends VoidVisitorWithDefaults<
             System.out.println("Error I/O");
             e.printStackTrace();
         }
-
+        System.out.println("Hello 1");
         if (!declaration.isPublic()) return;
-
-        List<String> issuesVariable = new ArrayList<>();
+        System.out.println("Hello 2");
+        List<String> variablesList = new ArrayList<>();
         List<String> listOfVariables = new ArrayList<>();
 
         // Parse all the fields to find the private ones
@@ -70,23 +71,23 @@ public class NoPublicGettersWithPrivateElements extends VoidVisitorWithDefaults<
 
 
         if (!listOfVariables.isEmpty()) {
-            issuesVariable = listOfVariables;
+            variablesList = new ArrayList<>(listOfVariables); //c'est pas beau mais tant pis
             System.out.println("Checking any private fields without getters : ");
             for (String variable : listOfVariables) {
                 for (MethodDeclaration method : declaration.getMethods()) {
                     if (method.getNameAsString().equalsIgnoreCase("get" + variable)) {
-                        issuesVariable.remove(variable);
+                        variablesList.remove(variable);
                     }
                 }
             }
         }
 
-        if (!issuesVariable.isEmpty()) {
+        if (!variablesList.isEmpty()) {
             try {
                 FileWriter fileWriter = new FileWriter(fileName);
-                fileWriter.write("The analysis revealed " + issuesVariable.size() + " privates variables " +
+                fileWriter.write("The analysis revealed " + variablesList.size() + " privates variables " +
                         "without getters : \n");
-                for (String result : issuesVariable) {
+                for (String result : variablesList) {
                     fileWriter.write(result + "\n");
                 }
                 fileWriter.close();
