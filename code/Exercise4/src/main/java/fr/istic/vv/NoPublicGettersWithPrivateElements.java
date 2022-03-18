@@ -56,9 +56,9 @@ public class NoPublicGettersWithPrivateElements extends VoidVisitorWithDefaults<
             System.out.println("Error I/O");
             e.printStackTrace();
         }
-        System.out.println("Hello 1");
+
         if (!declaration.isPublic()) return;
-        System.out.println("Hello 2");
+
         List<String> variablesList = new ArrayList<>();
         List<String> listOfVariables = new ArrayList<>();
 
