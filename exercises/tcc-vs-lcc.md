@@ -15,6 +15,7 @@ NIC = number of indirect connections
 
 Et TCC = NDC / NP, et LCC = (NDC + NIC) / NP, donc LCC >= TCC. 
 
+Voici un exemple d'une classe où TCC et LCC sont égaux :
 
 ```java
 public class Wejdene {
